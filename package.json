@@ -1,6 +1,6 @@
 {
-  "name": "sanity-template-template-nextjs-personal-website",
-  "private": true,
+  "name": "sanity-wildwillys",
+  "private": false,
   "scripts": {
     "build": "next build",
     "dev": "next",

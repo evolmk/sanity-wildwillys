@@ -8,24 +8,13 @@ export interface MenuItem {
   title?: string
 }
 
-export interface MilestoneItem {
-  description?: string
-  duration?: {
-    start?: string
-    end?: string
-  }
-  image?: Image
-  tags?: string[]
-  title?: string
-}
-
-export interface ShowcaseProject {
+export interface ShowcaseService {
   _type: string
-  coverImage?: Image
-  overview?: PortableTextBlock[]
-  slug?: string
-  tags?: string[]
   title?: string
+  slug?: string
+  meta?: PortableTextBlock[]
+  description?: PortableTextBlock[]
+  iconImage?: Image
 }
 
 // Page payloads
@@ -33,31 +22,24 @@ export interface ShowcaseProject {
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
-  showcaseProjects?: ShowcaseProject[]
+  showcaseServices?: ShowcaseService[]
   title?: string
 }
 
 export interface PagePayload {
-  body?: PortableTextBlock[]
-  name?: string
-  overview?: PortableTextBlock[]
   title?: string
   slug?: string
+  meta?: PortableTextBlock[]
+  body?: PortableTextBlock[]
 }
 
-export interface ProjectPayload {
-  client?: string
-  coverImage?: Image
-  description?: PortableTextBlock[]
-  duration?: {
-    start?: string
-    end?: string
-  }
-  overview?: PortableTextBlock[]
-  site?: string
-  slug: string
-  tags?: string[]
+export interface ServicePayload {
   title?: string
+  slug?: string
+  meta?: PortableTextBlock[]
+  body?: PortableTextBlock[]
+  description?: PortableTextBlock[]
+  iconImage?: Image
 }
 
 export interface SettingsPayload {

@@ -4,12 +4,11 @@ export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
     overview,
-    showcaseProjects[]->{
+    showcaseServices[]->{
       _type,
-      coverImage,
-      overview,
+      iconImage,
+      description,
       "slug": slug.current,
-      tags,
       title,
     },
     title,
@@ -26,17 +25,13 @@ export const pagesBySlugQuery = groq`
   }
 `
 
-export const projectBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0] {
+export const serviceBySlugQuery = groq`
+  *[_type == "service" && slug.current == $slug][0] {
     _id,
-    client,
-    coverImage,
+    iconImage,
     description,
-    duration,
-    overview,
-    site,
+    body,
     "slug": slug.current,
-    tags,
     title,
   }
 `

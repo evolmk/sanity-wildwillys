@@ -12,16 +12,13 @@ import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
 import page from '@/sanity/schemas/documents/page'
-import project from '@/sanity/schemas/documents/project'
-import duration from '@/sanity/schemas/objects/duration'
-import milestone from '@/sanity/schemas/objects/milestone'
-import timeline from '@/sanity/schemas/objects/timeline'
+import service from '@/sanity/schemas/documents/service'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+  'Next.js Website with Sanity.io'
 
 export default defineConfig({
   basePath: studioUrl,
@@ -35,12 +32,9 @@ export default defineConfig({
       home,
       settings,
       // Documents
-      duration,
       page,
-      project,
+      service
       // Objects
-      milestone,
-      timeline,
     ],
   },
   plugins: [

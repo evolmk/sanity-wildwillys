@@ -1,7 +1,7 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Link from 'next/link'
 
-import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
+import { ServiceListItem } from '@/components/pages/home/ServiceListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
@@ -13,17 +13,17 @@ export interface HomePageProps {
 
 export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
+  const { overview = [], showcaseServices = [], title = '' } = data ?? {}
 
   return (
     <div className="space-y-20">
       {/* Header */}
       {title && <Header centered title={title} description={overview} />}
-      {/* Showcase projects */}
-      {showcaseProjects && showcaseProjects.length > 0 && (
+      {/* Showcase services */}
+      {showcaseServices && showcaseServices.length > 0 && (
         <div className="mx-auto max-w-[100rem] rounded-md border">
-          {showcaseProjects.map((project, key) => {
-            const href = resolveHref(project?._type, project?.slug)
+          {showcaseServices.map((service, key) => {
+            const href = resolveHref(service?._type, service?.slug)
             if (!href) {
               return null
             }
@@ -32,12 +32,12 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
                 key={key}
                 href={href}
                 data-sanity={encodeDataAttribute?.([
-                  'showcaseProjects',
+                  'showcaseServices',
                   key,
                   'slug',
                 ])}
               >
-                <ProjectListItem project={project} odd={key % 2} />
+                <ServiceListItem service={service} odd={key % 2} />
               </Link>
             )
           })}

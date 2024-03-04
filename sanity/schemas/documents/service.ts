@@ -2,8 +2,8 @@ import { DocumentIcon, ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'project',
-  title: 'Project',
+  name: 'service',
+  title: 'Service',
   type: 'document',
   icon: DocumentIcon,
   // Uncomment below to have edits publish automatically as you type
@@ -11,7 +11,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your project.',
+      description: 'Service Heading',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -28,10 +28,10 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'overview',
+      name: 'meta',
       description:
-        'Used both for the <meta> description tag for SEO, and project subheader.',
-      title: 'Overview',
+        'Used for the SEO <meta> description tag.',
+      title: 'Meta',
       type: 'array',
       of: [
         // Paragraphs
@@ -57,43 +57,47 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'coverImage',
-      title: 'Cover Image',
+      name: 'description',
       description:
-        'This image will be used as the cover image for the project. If you choose to add it to the show case projects, this is the image displayed in the list within the homepage.',
+        'Short Description used for homepage',
+      title: 'Short Description',
+      type: 'array',
+      of: [
+        // Paragraphs
+        defineArrayMember({
+          lists: [],
+          marks: {
+            annotations: [],
+            decorators: [
+              {
+                title: 'Italic',
+                value: 'em',
+              },
+              {
+                title: 'Strong',
+                value: 'strong',
+              },
+            ],
+          },
+          styles: [],
+          type: 'block',
+        }),
+      ],
+      validation: (rule) => rule.max(100).required(),
+    }),
+    defineField({
+      name: 'iconImage',
+      title: 'Icon Image',
       type: 'image',
       options: {
         hotspot: true,
       },
       validation: (rule) => rule.required(),
     }),
+
     defineField({
-      name: 'duration',
-      title: 'Duration',
-      type: 'duration',
-    }),
-    defineField({
-      name: 'client',
-      title: 'Client',
-      type: 'string',
-    }),
-    defineField({
-      name: 'site',
-      title: 'Site',
-      type: 'url',
-    }),
-    defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        layout: 'tags',
-      },
-    }),
-    defineField({
-      name: 'description',
-      title: 'Project Description',
+      name: 'body',
+      title: 'Service Content',
       type: 'array',
       of: [
         defineArrayMember({
@@ -115,11 +119,6 @@ export default defineType({
             ],
           },
           styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
         }),
         defineField({
           type: 'image',

@@ -11,16 +11,16 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your personal website.',
+      description: 'Homepage Title',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'overview',
+      name: 'meta',
       description:
-        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
-      title: 'Description',
+        'Used for the SEO <meta> description tag.',
+      title: 'Meta',
       type: 'array',
       of: [
         // Paragraphs
@@ -59,15 +59,15 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'showcaseProjects',
-      title: 'Showcase projects',
+      name: 'showcaseServices',
+      title: 'Showcase services',
       description:
-        'These are the projects that will appear first on your landing page.',
+        'These are the services that will appear first on your homepage.',
       type: 'array',
       of: [
         defineArrayMember({
           type: 'reference',
-          to: [{ type: 'project' }],
+          to: [{ type: 'service' }],
         }),
       ],
     }),

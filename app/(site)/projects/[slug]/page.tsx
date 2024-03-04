@@ -4,12 +4,12 @@ import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { ProjectPage } from '@/components/pages/project/ProjectPage'
+import { ServicePage } from '@/components/pages/service/ServicePage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
-import { loadProject } from '@/sanity/loader/loadQuery'
-const ProjectPreview = dynamic(
-  () => import('@/components/pages/project/ProjectPreview'),
+import { loadService } from '@/sanity/loader/loadQuery'
+const ServicePreview = dynamic(
+  () => import('@/components/pages/service/ServicePreview'),
 )
 
 type Props = {
@@ -20,13 +20,13 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { data: project } = await loadProject(params.slug)
-  const ogImage = urlForOpenGraphImage(project?.coverImage)
+  const { data: service } = await loadService(params.slug)
+  const ogImage = urlForOpenGraphImage(service?.iconImage)
 
   return {
-    title: project?.title,
-    description: project?.overview
-      ? toPlainText(project.overview)
+    title: service?.title,
+    description: service?.description
+      ? toPlainText(service.description)
       : (await parent).description,
     openGraph: ogImage
       ? {
@@ -37,19 +37,19 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return generateStaticSlugs('project')
+  return generateStaticSlugs('service')
 }
 
-export default async function ProjectSlugRoute({ params }: Props) {
-  const initial = await loadProject(params.slug)
+export default async function ServiceSlugRoute({ params }: Props) {
+  const initial = await loadService(params.slug)
 
   if (draftMode().isEnabled) {
-    return <ProjectPreview params={params} initial={initial} />
+    return <ServicePreview params={params} initial={initial} />
   }
 
   if (!initial.data) {
     notFound()
   }
 
-  return <ProjectPage data={initial.data} />
+  return <ServicePage data={initial.data} />
 }

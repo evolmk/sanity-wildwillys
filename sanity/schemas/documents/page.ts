@@ -8,25 +8,28 @@ export default defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
-      type: 'string',
       name: 'title',
+      description: 'Page Heading',
       title: 'Title',
+      type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      type: 'slug',
       name: 'slug',
       title: 'Slug',
+      type: 'slug',
       options: {
         source: 'title',
+        maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'overview',
+      name: 'meta',
       description:
-        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
-      title: 'Overview',
+        'Used for the SEO <meta> description tag.',
+      title: 'Meta',
       type: 'array',
       of: [
         // Paragraphs
@@ -56,7 +59,7 @@ export default defineType({
       name: 'body',
       title: 'Body',
       description:
-        "This is where you can write the page's content. Including custom blocks like timelines for more a more visual display of information.",
+        "page content",
       of: [
         // Paragraphs
         defineArrayMember({
@@ -78,11 +81,6 @@ export default defineType({
             ],
           },
           styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
         }),
         defineField({
           type: 'image',
