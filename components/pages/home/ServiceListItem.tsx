@@ -32,6 +32,7 @@ export function ServiceListItem(props: ServiceProps) {
   )
 }
 
+
 function TextBox({ service }: { service: ServiceProps }) {
   return (
     <div className="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
