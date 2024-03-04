@@ -1,6 +1,7 @@
 import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
 
+// Menu
 export interface MenuItem {
   _type: string
   slug?: string
