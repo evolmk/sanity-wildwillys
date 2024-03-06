@@ -14,11 +14,11 @@ export interface ServicePageProps {
 export function ServicePage({ data, encodeDataAttribute }: ServicePageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const {
-    title,
-    meta,
     body,
     description,
     iconImage,
+    summary, //unused
+    title,
   } = data ?? {}
 
   return (

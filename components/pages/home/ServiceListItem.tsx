@@ -33,7 +33,7 @@ export function ServiceListItem(props: ServiceProps) {
 }
 
 
-function TextBox({ service }: { service: ServiceProps }) {
+function TextBox({ service }: { service: ShowcaseService }) {
   return (
     <div className="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
       <div>
@@ -43,7 +43,7 @@ function TextBox({ service }: { service: ServiceProps }) {
         </div>
         {/* Overview  */}
         <div className="font-serif text-gray-500">
-          <CustomPortableText value={service.description as PortableTextBlock[]} />
+          <CustomPortableText value={service.summary as PortableTextBlock[]} />
         </div>
       </div>
       {/* Tags

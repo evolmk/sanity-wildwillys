@@ -3,13 +3,13 @@ import { groq } from 'next-sanity'
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
-    overview,
+    description,
     showcaseServices[]->{
       _type,
       iconImage,
-      description,
-      "slug": slug.current,
+      summary,
       title,
+      "slug": slug.current,
     },
     title,
   }
@@ -28,11 +28,11 @@ export const pagesBySlugQuery = groq`
 export const serviceBySlugQuery = groq`
   *[_type == "service" && slug.current == $slug][0] {
     _id,
-    iconImage,
-    description,
     body,
-    "slug": slug.current,
+    description,
+    iconImage,
     title,
+    "slug": slug.current,
   }
 `
 

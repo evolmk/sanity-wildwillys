@@ -10,11 +10,11 @@ export interface MenuItem {
 
 export interface ShowcaseService {
   _type: string
-  title?: string
-  slug?: string
-  meta?: PortableTextBlock[]
   description?: PortableTextBlock[]
   iconImage?: Image
+  slug?: string
+  summary?: PortableTextBlock[]
+  title?: string
 }
 
 // Page payloads
@@ -27,19 +27,19 @@ export interface HomePagePayload {
 }
 
 export interface PagePayload {
-  title?: string
-  slug?: string
-  meta?: PortableTextBlock[]
   body?: PortableTextBlock[]
+  description?: PortableTextBlock[]
+  slug?: string
+  title?: string
 }
 
 export interface ServicePayload {
-  title?: string
-  slug?: string
-  meta?: PortableTextBlock[]
   body?: PortableTextBlock[]
   description?: PortableTextBlock[]
   iconImage?: Image
+  slug?: string
+  summary?: PortableTextBlock[]
+  title?: string
 }
 
 export interface SettingsPayload {

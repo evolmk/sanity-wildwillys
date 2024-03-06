@@ -9,8 +9,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'Page Heading',
-      title: 'Title',
+      title: 'Page Title (SEO)',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -26,10 +25,8 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'meta',
-      description:
-        'Used for the SEO <meta> description tag.',
-      title: 'Meta',
+      name: 'description',
+      title: 'Page Description (SEO)',
       type: 'array',
       of: [
         // Paragraphs

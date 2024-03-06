@@ -21,8 +21,8 @@ export async function generateMetadata(
 
   return {
     title: page?.title,
-    description: page?.overview
-      ? toPlainText(page.overview)
+    description: page?.description
+      ? toPlainText(page.description)
       : (await parent).description,
   }
 }
