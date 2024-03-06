@@ -48,7 +48,7 @@ function TextBox({ service }: { service: ShowcaseService }) {
       </div>
       {/* Tags
       <div className="mt-4 flex flex-row gap-x-2">
-        {project.tags?.map((tag, key) => (
+        {service.tags?.map((tag, key) => (
           <div className="text-sm font-medium lowercase md:text-lg" key={key}>
             #{tag}
           </div>
